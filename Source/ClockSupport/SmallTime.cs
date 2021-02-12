@@ -11,8 +11,7 @@ namespace Plisky.ClockChallenge {
     [DebuggerDisplay("{Hour}:{Minute}")]
     public class SmallTime {
         public int Hour { get; set; }
-        public int Minute { get; set; }
-       
+        public int Minute { get; set; }       
 
     }
 }

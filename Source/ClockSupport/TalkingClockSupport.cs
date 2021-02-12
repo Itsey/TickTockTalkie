@@ -30,45 +30,45 @@ namespace Plisky.ClockChallenge {
         }
 
         private string SpecialCase(int hour, int minute) {
-            bool flip = false;
-            string minText = null;
+            bool reverseHourMinuteTextOrder = false;
+            string minuteText = null;
             string hourText = null;
 
             if (hour == SPECIAL_ZERO_MIDNIGHT) {
                 hourText = "midnight";
-                minText = minute.ToWords() + " past";
-                flip = true;
+                minuteText = minute.ToWords() + " past";
+                reverseHourMinuteTextOrder = true;
             }
             if (hour == SPECIAL_12_NOON) {
                 hourText = "noon";
-                minText = minute.ToWords();
+                minuteText = minute.ToWords();
             }
             if (minute == 0) {
-                minText = "";
+                minuteText = "";
             }
 
             if (minute == HALF_PAST_MINS) {
-                minText = $"half past";
+                minuteText = $"half past";
                 hourText = hour.ToWords();
-                flip = true;
+                reverseHourMinuteTextOrder = true;
             }
 
             if (minute == QUARTER_TO_MINS) {
-                hourText = hourText ?? (++hour).ToWords();
-                minText = "quarter to";
-                flip = true;
+                hourText ??= (++hour).ToWords();
+                minuteText = "quarter to";
+                reverseHourMinuteTextOrder = true;
             }
 
             if (minute == QUARTER_PAST_MINS) {
-                hourText = hourText ?? hour.ToWords();
-                minText = "quarter past";
-                flip = true;
+                hourText ??= hour.ToWords();
+                minuteText = "quarter past";
+                reverseHourMinuteTextOrder = true;
             }
 
             if (hourText != null) {
-                b.Assert.NotNull(minText);
+                b.Assert.NotNull(minuteText);
 
-                return flip ? $"{minText} {hourText}" : $"{hourText} {minText}";
+                return reverseHourMinuteTextOrder ? $"{minuteText} {hourText}" : $"{hourText} {minuteText}";
             }
             return null;
         }
@@ -79,8 +79,7 @@ namespace Plisky.ClockChallenge {
                 throw new ArgumentOutOfRangeException(nameof(timeToParse), "Unable to Parse null or empty strings to words.");
             }
 
-
-            SmallTime result = new SmallTime();
+            var result = new SmallTime();
 
             try {
                 if (!timeToParse.Contains(":")) {
