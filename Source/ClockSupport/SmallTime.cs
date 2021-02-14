@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
-
-namespace Plisky.ClockChallenge {
+﻿namespace Plisky.ClockChallenge {
 
     /// <summary>
-    /// Small time is just hours and minutes and some info on formatting, way less complex than a timespan.
+    /// Represents the time as hour and minute.
     /// </summary>
-    [DebuggerDisplay("{Hour}:{Minute}")]
-    public class SmallTime {
+    public struct SmallTime {
         public int Hour { get; set; }
-        public int Minute { get; set; }       
+        public int Minute { get; set; }
 
+        public SmallTime(int hr, int mn) : this() {
+            Hour = hr;
+            Minute = mn;
+        }
     }
 }

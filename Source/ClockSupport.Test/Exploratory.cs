@@ -1,22 +1,18 @@
 namespace Plisky.ClockChallenge.Test {
-    using System;
-    using Xunit;
-    using Humanizer;
+
     using Plisky.Diagnostics;
     using Plisky.Test;
+    using Xunit;
 
+    /// <summary>
+    /// Explorartory and temporary tests while we work out what is going on.
+    /// </summary>
     public class Exploratory {
-        Bilge b = new Bilge(tl: System.Diagnostics.SourceLevels.Verbose);
+        private Bilge b = new Bilge(tl: System.Diagnostics.SourceLevels.Verbose);
 
         public Exploratory() {
         }
 
-        
-
        
-
-
-
-
     }
 }
